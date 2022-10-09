@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <Nama deployments>
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: <Nama deployments>
+  template:
+    metadata:
+      labels:
+        name: <Nama deployments>
+    spec:
+      nodeName: <Nama node yang kita set>
+      containers:
+      - name: <Nama container yang kita definisikan>
+        image: <nama images yang kita build>
+        imagePullPolicy: <always -> ketika menggunakan registry private, never -> jika tidak menggunakan registry>
+        ports:
+          - containerPort: <Internal port yang akan kita tuju>
+      imagePullSecrets:
+      - name: <nama secret apabila menggunakan private registry>
